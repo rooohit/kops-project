@@ -27,7 +27,7 @@ spec:
               name: vprodb-port
           env: 
             - name: MYSQL_ROOT_PASSWORD
-              valuefrom:
+              valueFrom:
                 secretKeyRef:
                   name: app-secret
                   key: db-pass
