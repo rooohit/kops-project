@@ -13,24 +13,24 @@ spec:
         app: vprodb
     spec:
       containers:
-      - name: vprodb
-        image: real1podman/vprofiledb:latest
-        volumeMounts:
-          - mountPath: /var/lib/mysql
-            name: vpro-db-data
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-        ports:
-        - containerPort: 3306
-          name: vprodb-port
-        env: 
-        - name: MYSQL_ROOT_PASSWORD
-          valuefrom:
-            secretKeyRef:
-              name: app-secret
-              key: db-pass
+        - name: vprodb
+          image: real1podman/vprofiledb:latest
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: vpro-db-data
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 3306
+              name: vprodb-port
+          env: 
+            - name: MYSQL_ROOT_PASSWORD
+              valuefrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: db-pass
       nodeSelector:
         zone: us-east-1a
       volumes:
